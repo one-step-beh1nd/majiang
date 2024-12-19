@@ -76,15 +76,15 @@ def sichuan(round: int):
                 need_draw = False
 
                 # 接收达到4次，则胡牌
-                # if palyer_recev_count[receiver] >= 4:
-                #     hu_player[receiver] = True
-                #     in_player -= 1
-
-                # if in_player <= 1:
-                #     break
-
                 if palyer_recev_count[receiver] >= 4:
+                    hu_player[receiver] = True
+                    in_player -= 1
+
+                if in_player <= 1:
                     break
+
+                # if palyer_recev_count[receiver] >= 4:
+                #     break
             else:
                 # 无人接收
 
@@ -108,6 +108,7 @@ def sichuan(round: int):
         first_player = (first_player + 1) % 4
 
     return player_virus
+
 
 
 

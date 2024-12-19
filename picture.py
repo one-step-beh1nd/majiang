@@ -4,9 +4,9 @@ from sichuan import sichuan
 import json
 
 round = 100000
-games_per_round = 6
-step = 1
-
+games_per_round = 21
+step = 2
+file_name = 'long'
 result = {'shagua':{}, 'fujian': {}, 'sichuan': {}}
 
 for i in range(0, games_per_round, step):
@@ -30,7 +30,7 @@ for i in range(0, games_per_round, step):
     result['fujian'][i] = fujian_virus
     result['sichuan'][i] = sichuan_virus
 
-with open("./result.json", 'w') as f:
+with open(f"./{file_name}.json", 'w') as f:
     json.dump(result, f, indent=4)
 
 
@@ -40,11 +40,11 @@ import matplotlib.pyplot as plt
 import json
 import os
 
-if not os.path.exists('./pic'):
-    os.makedirs('./pic')
+if not os.path.exists(f'./{file_name}'):
+    os.makedirs(f'./{file_name}')
 
-save_path = './pic'
-with open('./result.json', 'r') as f:
+save_path = f'./{file_name}'
+with open(f'./{file_name}.json', 'r') as f:
     majiang: dict = json.load(f)
 
 x = [i for i in range(0, games_per_round, step)]
@@ -91,9 +91,9 @@ for i in range(9):
     # 绘制子图
     plt.plot(x, y[i], marker='o')
 
-    plt.title(f"{people} {m_name}")
-    plt.xlabel('Disinfection Interval / Round')
-    plt.ylabel('Virus / Unit')
+    plt.title(f"{people}st player {m_name}", fontsize=20)
+    plt.xlabel('Disinfection Interval / Round', fontsize=15)
+    plt.ylabel('Virus / Unit', fontsize=15)
     plt.grid(True)
     # 保存每个子图为一个文件
     plt.savefig(os.path.join(save_path, f'{people}_{m_name}.png'))
@@ -107,9 +107,9 @@ plt.figure(figsize=(8, 8))
 plt.plot(x, y[0], marker='o', label='dazhong')
 plt.plot(x, y[1], marker='o', label='fujian')
 plt.plot(x, y[2], marker='o', label='sichuan')
-plt.title('1')
-plt.xlabel('Disinfection Interval / Round')
-plt.ylabel('Virus / Unit')
+plt.title('1st player', fontsize=20)
+plt.xlabel('Disinfection Interval / Round', fontsize=15)
+plt.ylabel('Virus / Unit', fontsize=15)
 plt.grid(True)
 plt.legend()
 plt.savefig(os.path.join(save_path, f'1.png'))
@@ -119,9 +119,9 @@ plt.figure(figsize=(8, 8))
 plt.plot(x, y[3], marker='o', label='dazhong')
 plt.plot(x, y[4], marker='o', label='fujian')
 plt.plot(x, y[5], marker='o', label='sichuan')
-plt.title('2')
-plt.xlabel('Disinfection Interval / Round')
-plt.ylabel('Virus / Unit')
+plt.title('2st player', fontsize=20)
+plt.xlabel('Disinfection Interval / Round', fontsize=15)
+plt.ylabel('Virus / Unit', fontsize=15)
 plt.grid(True)
 plt.legend()
 plt.savefig(os.path.join(save_path, f'2.png'))
@@ -131,9 +131,9 @@ plt.figure(figsize=(8, 8))
 plt.plot(x, y[6], marker='o', label='dazhong')
 plt.plot(x, y[7], marker='o', label='fujian')
 plt.plot(x, y[8], marker='o', label='sichuan')
-plt.title('3')
-plt.xlabel('Disinfection Interval / Round')
-plt.ylabel('Virus / Unit')
+plt.title('3st player', fontsize=20)
+plt.xlabel('Disinfection Interval / Round', fontsize=15)
+plt.ylabel('Virus / Unit', fontsize=15)
 plt.grid(True)
 plt.legend()
 plt.savefig(os.path.join(save_path, f'3.png'))
@@ -146,10 +146,10 @@ for i in range(3):
     plt.plot(x, y[i+3], marker='o', label='2')
     plt.plot(x, y[i+6], marker='o', label='3')
 
-    plt.title(majiang_name[i])
+    plt.title(majiang_name[i], fontsize=20)
     
-    plt.xlabel('Disinfection Interval / Round')
-    plt.ylabel('Virus / Unit')
+    plt.xlabel('Disinfection Interval / Round', fontsize=15)
+    plt.ylabel('Virus / Unit', fontsize=15)
     plt.grid(True)
     plt.legend()
     plt.savefig(os.path.join(save_path, f'{majiang_name[i]}.png'))
